@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        <br />
+        <br />
+    </div>
+    {{# if orders}}
+        {{# each orders}}
+            <div class="col-md-4 col-md-offset-2">
+                <div class="card-group">
+                    <div class="card card-shadow">
+                        <div class="card-header">Order id: <a id="setStatusLink{{ this._id }}" href="/admin/setstatus/{{ this._id }}">#{{this._id }}</a></div>
+                            <div class="card-body">
+                                <label>Product(s) ordered</label>
+                                {{# each this.cart.items}}
+                                    <ul>
+                                        <li><a href="{{this.item.productLink}}" target="_blank">{{this.item.title}}</a> x {{this.qty}}</li>
+                                    </ul>
+                                {{/each}}
+                                <label>Shipping information</label>
+                                    <ul>
+                                        <li>Name: {{this.name}}</li>
+                                        <li>AdressLine 1: {{this.adressLine1}}</li>
+                                        {{# if this.adressLine2}}
+                                            <li>AdressLine 2: {{this.adressLine2}}</li>
+                                        {{/if}}
+                                        <li>City: {{this.city}}</li>
+                                        <li>State: {{this.state}}</li>
+                                        <li>Postal code: {{this.postalCode}}</li>
+                                        <li>Country: {{this.country}}</li>
+                                    </ul>
+                                <form id="{{ this._id }}">
+                                    <div class="form-group">
+                                        <label for="Aliexpress order id">Aliexpress order ID</label>
+                                        <input type="aid" id="aid{{ this._id }}" name="aid" class="form-control" placeholder="Order ID">
+                                        <br />
+                                        <!--<button id="setStatus" type="submit" class="btn btn-primary">Set aliexpress order ID</button>-->
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#add-order-id">Set aliexpress order ID</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="add-order-id" tabindex="-1" role="dialog" aria-labelledby="add-order-idLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="add-order-idLabel">Add order id</h4>
+                                                    </div>
+                                                <div class="modal-body">
+                                                    Do you want to add this order id to order?
+                                                </div>
+                                                    <div class="modal-footer">
+                                                        <button id="setStatus" type="button" class="btn btn-success" onclick='document.getElementById("setStatusLink{{ this._id }}").href += "/" + document.getElementById("aid{{ this._id }}").value;document.getElementById("setStatusLink{{ this._id }}").click();' data-dismiss="modal">Yes</button>
+                                                        <button type="button" class="btn btn-danger" onclick='' data-dismiss="modal">No</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <br />
+            </div>
+        {{/each}}
+        {{ else }}
+            <div class="col-md-8 col-md-offset-2">
+                <br />
+                <h2>No orders are aliexpress order id</h2>
+                <br />
+                <a href="/admin/admin-panel" class="btn btn-primary">Go to admin Panel</a> 
+            </div>
+    {{/if}}
+</div>

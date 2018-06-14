@@ -1,0 +1,96 @@
+    <div class="row">
+        {{# if products}}
+            <div class="col-sm-12 col-md-10 col-md-offset-1" style="margin-left: 8%;margin-top: 4%;">
+                <div class="card-unlitmited card-shadow bg-white">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Total</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{# each products}}
+                                <tr>
+                                    <td class="col-sm-8 col-md-6">
+                                    <div class="media">
+                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{ this.item.imagePath }}" style="width: 72px; height: 72px;"> </a>
+                                        <div class="media-body" style="margin-left: 15px;">
+                                            <h4 class="media-heading"><a href="/product/{{ this.item._id }}">{{ this.item.title }}</a></h4>
+                                            <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                        </div>
+                                    </div></td>
+                                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                                    <input hidden value="{{ this.item._id }}" id="id">
+                                    <input class="form-control" id="amount" value="{{ this.qty }}" onchange="setAmount('{{ this.item._id }}')">
+                                    </td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong>$ {{ this.item.price }}</strong></td>
+                                    <td class="col-sm-1 col-md-1 text-center"><strong>${{ this.price}}</strong></td>
+                                    <td class="col-sm-1 col-md-1">
+                                        <a href="/remove/{{this.item._id}}">
+                                            <button type="button" class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-remove"></span> Remove
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h5>Subtotal</h5></td>
+                                <td class="text-right"><h5><strong>$ {{totalPrice}}</strong></h5></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h5>Estimated shipping</h5></td>
+                                <td class="text-right"><h5><strong>$ 0</strong></h5></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h3>Total</h3></td>
+                                <td class="text-right"><h3><strong>$ {{totalPrice}}</strong></h3></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>
+                                    <a href="/">
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/checkout">
+                                        <button type="button" class="btn btn-success">
+                                            Checkout <span class="glyphicon glyphicon-play"></span>
+                                        </button></td>
+                                    </a>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+            {{ else }}
+                <div class="col-md-10 col-md-offset-2">
+                    <br />
+                    <br />
+                </div>
+                <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                    <strong><h1>No Items in Cart</h1></strong>
+                </div>
+    {{/if}}
+    </div>
+    <script type="text/javascript" src="/javascripts/shoppingcart.js"></script>

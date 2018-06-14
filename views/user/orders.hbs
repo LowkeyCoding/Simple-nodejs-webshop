@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        <br />
+        <br />
+    </div>
+    <div class="col-md-8 col-md-offset-2" style="margin-left: 15%!important;">
+        {{# each orders}}
+            <div class="card-group">
+                {{# each this }}
+                    <div class="card card-shadow" style="padding-bottom:0%!important;margin-right:15px;">
+                        <div class="card-header">Order id: <a id="orderId" href="/user/invoice/{{ this._id }}">#{{orderDot this._id }}</a></div>
+                            <div class="card-body">
+                                <p>Total price: $ {{this.cart.totalPrice}}</p>
+                                {{#equal this.status "Shipped" }}
+                                    Tracking number:  <a href="{{this.shippingNumber}}">{{ this.shippingNumber }}</a>
+                                {{/equal}}
+                            </div>
+                        <div class="card-footer">Status: {{ this.status }}</div>
+                    </div>
+                {{/each}}
+            </div>
+        {{/each}}
+    </div>
+    <div class="col-md-10 col-md-offset-2">
+        <br />
+        <br />
+    </div>
+</div>

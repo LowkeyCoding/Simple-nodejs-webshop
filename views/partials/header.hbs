@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <a class="navbar-brand" href="/">Lowkey World</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item navbar-right">
+        <a class="nav-link" href="/shopping-cart/">
+        <i class="fas fa-shopping-basket"></i> Shopping Cart
+        {{# if session.cart}}
+            <span class="badge"><p class="badge-text">{{session.cart.totalQty}}</p></span>
+        {{/if}}
+        </a>
+      </li>
+      <li class="nav-item dropdown navbar-right">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-cog"></i> User Management
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           {{# if login }}
+            <!--<a class="dropdown-item" href="/user/profile"><i class="fas fa-user-alt"></i> Profile</a>-->
+            <a class="dropdown-item" href="/user/orders"><i class="fas fa-money-bill-alt"></i> Orders</a>
+            {{# if admin }}
+              <a class="dropdown-item" href="/admin/admin-panel"><i class="fas fa-key"></i> Admin Panel</a>
+            {{/if}}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            {{ else }}
+            <a class="dropdown-item" href="/user/signup"><i class="fas fa-user-plus"></i> Sign up</a>
+            <a class="dropdown-item" href="/user/signin"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+          {{/if}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

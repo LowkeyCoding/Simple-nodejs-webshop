@@ -1,0 +1,56 @@
+<br />
+<div class="card bg-white">
+	<div class="row">
+		<aside class="col-sm-5 border-right" style="padding-right: 0;">
+            <article class="gallery-wrap"> 
+                <div class="img-big-wrap">
+                    <div> <a href="#"><img src="{{ product.imagePath }}" style="width:100%;"></a></div>
+                </div> <!-- slider-product.// -->
+            </article> <!-- gallery-wrap .end// -->
+		</aside>
+		<aside class="col-sm-7">
+            <article class="card-body p-5"></article>
+            <h3 class="title mb-3">{{ product.title }}</h3>
+            <dl class="param param-feature">
+                <dt>Product Price</dt>
+                    <dd>$ {{ product.price }}</dd>
+            </dl> 
+            <!-- price-detail-wrap .// -->
+            <dl class="item-property">
+                <dt>Description</dt>
+                    <dd>
+                        <p style="white-space: pre-line;">{{ product.description }}</p>
+                    </dd>
+            </dl>
+            <dl class="param param-feature">
+                <dt>Brand</dt>
+                    <dd>{{ product.brand }}</dd>
+            </dl>  <!-- item-property-hor .// -->
+            <dl class="param param-feature">
+                <dt>Delivery</dt>
+                    <dd>World wide</dd>
+            </dl>  <!-- item-property-hor .// -->
+            <hr>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <dl class="param param-inline">
+                            <dt>Quantity: </dt>
+                                <dd>
+                                    <input class="form-control form-control-sm" type="amount" id="amount" name="amount" style="width:70px;">
+                                    <script>
+                                        document.getElementById('amount').value = 1;
+                                    </script>
+                                </dd>
+                        </dl>  <!-- item-property .// -->
+                    </div> <!-- col.// -->
+                </div> <!-- row.// -->
+                <hr>
+                <a href="/add-to-cart/{{ product._id }}" class="btn btn-lg btn-outline-primary text-uppercase" id="link"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+                <a id="setAmount"></a>
+            </article> <!-- card-body.// -->
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+    <br />
+    <script type="text/javascript" src="/javascripts/addItem.js"></script>
+</div> <!-- card.// -->'
+<br />

@@ -1,0 +1,213 @@
+/* Global style */
+body{
+  background-color: #E6EBF1;
+  margin-bottom: 100px;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+.card-shadow{
+  background: white;
+  box-shadow: 0 7px 14px 0 rgba(49, 49, 93, 0.10), 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+  border-radius: .25rem!important;
+  border-top-left-radius: .25rem!important;
+  border-top-right-radius: .25rem!important;
+  border-bottom-left-radius: .25rem!important;
+  border-bottom-right-radius: .25rem!important;
+  padding-bottom: 15px;
+}
+/* Background colors */
+.bg-white{
+  background-color: #ffffff;
+}
+
+/*Product cards*/
+.card-product .img-wrap {
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  position: relative;
+  height: 220px;
+  text-align: center;
+}
+.card-product .img-wrap img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+.card-product .info-wrap {
+  overflow: hidden;
+  padding: 15px;
+  border-top: 1px solid #eee;
+}
+.card-product .bottom-wrap {
+  padding: 15px;
+  border-top: 1px solid #eee;
+}
+
+.label-rating { margin-right:10px;
+  color: #333;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.card-product .price-old {
+  color: #999;
+}
+.card-unlitmited{
+  border: 1px solid #00000020!important;
+}
+.card-invoice{
+  border-left: 1px solid #00000020!important;
+}
+.card-group{
+  margin-top: 1%;
+}
+.card-text .description{
+  color: #7f7f7f;
+}
+.price{
+  margin-top: 7px;
+  font-weight: bold;
+  font-size: 16px;
+  vertical-align: 50%;
+}
+
+/*Helper styles*/
+.pad30{
+  padding: 30px
+}
+.pad-bottom{
+  padding-bottom: 30px;
+}
+.pad30-left{
+  padding-left: 30px;
+}
+.pad30-right{
+  padding-right: 30px;
+}
+.pad15-top{
+  padding-top: 15px;
+}
+.pull-right{
+  float: right;
+}
+.pull-left{
+  float: left;
+}
+
+.badge{
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #777;
+  border-radius: 10px;
+  margin-bottom: 2px;
+}
+.badge-text{
+  margin-bottom: 2px;
+}
+.badge-text-cart{
+  margin-bottom: 3px;
+}
+.no-margin{
+  margin-bottom: 0rem!important;
+}
+.label{
+  display: inline-block;
+  padding: 4.79px 5px;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  vertical-align: middle;
+  border-radius: .25em;
+  margin-bottom: 3px;
+}
+.label-success{
+  background-color: #5cb85c;
+}
+
+.btn-xs{
+  display: inline-block;
+  padding: 0.8px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  margin-bottom: 3px;
+}
+
+.cart-head{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.cart-total{
+  margin-top: 2%;
+  margin-bottom: 0%;
+  font-weight: bolder;
+}
+.checkout-form{
+  width: 160.836%;
+}
+.checkout-inline-form{
+  display: inline-block;
+  margin-left: 0px;
+}
+.checkout-special-form{
+  width: 161.99px;
+}
+.checkout-margin-form{
+  margin-right: 5.82px;
+}
+.checkout-form-container{
+  display:inline-block;
+  width: 100%;
+}
+.margn15{
+  margin-left: -15px;
+}
+.marg15{
+  margin-left: 15px;
+}
+.hidden{
+  display:none !important;
+}
+.list-group-item{
+  padding: 0;
+}
+
+/* Redone css */
+
+/* Profile page */
+.pad-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.lm-33p{
+  margin-left: 33%
+}
+
+/* footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+  height: 100px;
+}
+.footer a{
+  color:rgba(0, 0, 0, 0.5)!important;
+}
+.footer a:hover{
+  color:rgba(0, 0, 0, 0.9)!important;
+  text-decoration-line: none!important;
+}
