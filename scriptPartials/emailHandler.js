@@ -28,9 +28,9 @@ module.exports = function emailHandler(){
             }
         });
     };
-    this.sendPasswordReset = function(id, email, passwordHash, hostname){
-        let secret = bcrypt.hashSync(passwordHash, bcrypt.genSaltSync(5), null);
-        const passwordRestLink = 'https://' + hostname + '/reset/' + secret + '/' + email;
+    this.sendPasswordReset = function(id, email, hostname){
+        let secret = id;
+        const passwordRestLink = 'https://' + hostname + '/resetpassword/' + secret + '/' + email;
         const options={
             from: config.gmail_username,
             to: email,

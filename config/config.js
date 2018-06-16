@@ -32,3 +32,6 @@ define("title_Shopping_cart", "Shopping cart")
 define("db_link", "");
 define("hash", "");
 define("Sessions_cookie_max_age", ( 3 * 60 * 60 * 1000 ) + ( 0 * 60 * 1000 ) + ( 0 * 1000  ) + ( 0 ) ); /* (hours) (minuts) (seconds) (milliseconds) */
+
+//Stripe config
+define("stripe_key","")

@@ -269,9 +269,7 @@ module.exports = function handler() {
           return res.render('shop/shopping-cart', {products: null});
         }
         var cart = new Cart(req.session.cart);
-        var stripe = require("stripe")(
-          "sk_test_AMhxOUK5kVugfnbmm5koivgv"
-        );
+        var stripe = require("stripe")(config.stripe_key);
         stripe.charges.create({
           amount: cart.totalPrice * 100,
           currency: "usd",
@@ -364,31 +362,31 @@ module.exports = function handler() {
         });
     };
     this.sendResetPassword = function(req, res, next){
-        var email = req.body.email;
+        var email = req.params.email;
         var hostname = req.hostname;
         User.findOne({email: email}, function(err, res){
-            console.log(res);
-            eHandler.sendPasswordReset(res._id, res.email, res.password, hostname);
+            eHandler.sendPasswordReset(res._id, res.email, hostname);
         });
+        res.redirect('/user/signin')
     };
     this.getResetPassword = function(req, res, next){
-       res.render('resetPassword',{secrect: req.params.secrect, email: req.params.email});
+       res.render('shop/resetpassword',{secrect: req.params.secrect, email: req.params.email});
     };
     this.postResetPassword = function(req, res, next){
         var secrect = req.params.secrect;
         var email = req.params.email;
         User.findOne({email: email}, function(err, res){
-            console.log(res);
-            var same = bcrypt.compareSync(secrect,res.password)
+            var same = secrect == res._id;
             if (same == true){
-               var p1 = req.body.password1;
-               var p2 = req.body.password2;
-               if (p1 == p2){
-                   User.updateOne({email: email}, {$set:{password: bcrypt.hashSync(p1, bcrypt.genSaltSync(5), null)}});
-                   res.redirect('/user/signin');
-               }
+                var p1 = req.body.password1;
+                var p2 = req.body.password2;
+                if (p1 == p2){
+                    User.updateOne({email: email}, {$set:{password: bcrypt.hashSync(p1, bcrypt.genSaltSync(5))}}, function(err, res){
+                    });
+                }
             }
         });
+        res.redirect('/user/signin');
     }
     //Posts the signin form | Will redirect to login protected pages if you were trying yo acces them.
     this.postSignin = function(req, res, next){

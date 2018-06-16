@@ -27,19 +27,22 @@ router.get('/verify/:id',function(req, res, next){
   handler.getVerifyEmail(req, res, next);
 });
 /* GET reset password page */
-router.get('/reset/:secrect/:email', function(req, res, next){
+router.get('/resetpassword/:secrect/:email', function(req, res, next){
   handler.getResetPassword(req, res, next);
-})
+});
 /* GET send reset password */
-router.get('/sendReset/:secrect/:email', function(req, res, next){
-  handler.getResetPassword(req, res, next);
-})
+router.get('/sendReset/:email', function(req, res, next){
+  handler.sendResetPassword(req, res, next);
+});
+router.post('/resetpassword/:secrect/:email', function(req, res, next){
+  handler.postResetPassword(req, res, next);
+});
 /* GET shoppingcart page. */
 router.get('/shopping-cart', function(req, res, next){
   handler.getShoppingcart(req, res, next);
 });
 /* GET checkout page. */
-router.get('/checkout',handler.isLoggedIn,function(req, res, next){
+router.get('/checkout', handler.isLoggedIn,function(req, res, next){
   handler.getCheckout(req, res, next);
 });
 router.get('/product/:id', function(req, res, next){
