@@ -31,6 +31,10 @@ router.get('/removeproduct', handler.isAdmin, function(req, res, next){
 router.get('/addproduct', handler.isAdmin, function(req, res, next){
     handler.getAddProduct(req, res, next);
 });
+/* GET update product page. */
+router.get('/updateproduct', handler.isAdmin, function(req, res, next){
+    handler.getUpdateProduct(req, res, next, 3);
+});
 /* GET remove product(no visuals)*/
 router.get('/removeproduct/:id', handler.isAdmin, function(req, res, next){
     handler.postRemoveProduct(req, res, next);
@@ -38,6 +42,9 @@ router.get('/removeproduct/:id', handler.isAdmin, function(req, res, next){
 /* POST add product page. */
 router.post('/addproduct', handler.isAdmin, function(req, res, next){
     handler.postAddProduct(req, res, next);
+});
+router.post('/updateproduct/:id', handler.isAdmin, function(req, res, next){
+    handler.postUpdateProduct(req, res, next);
 });
 /* SET(s) the aliexpress order id and changes the status. */
 router.get('/setstatus/:id/:aid', handler.isAdmin, function(req, res, next){

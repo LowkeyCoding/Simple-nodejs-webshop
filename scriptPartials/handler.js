@@ -25,6 +25,7 @@ function date(){
         }
     return dd+'/'+mm+'/'+yyyy;
 }
+
 module.exports = function handler() {
     //gets all website products and create a chunk structure so its easy to render.
     this.getProductChunks = function(req, res, next, _chunkSize, page, title){
@@ -160,16 +161,39 @@ module.exports = function handler() {
     this.getAddProduct = function(req, res, next){
         res.render('admin/addproduct', {title: config.title_Add_product, });
     };
+    this.getUpdateProduct = function(req, res, next, _chunkSize){
+        this.getProductChunks(req, res, next, _chunkSize, 'admin/updateproduct', config.title_Update_product);
+    };
+    this.postUpdateProduct = function(req, res, next){
+        var id = req.params.id;
+        var imagePath = eval('req.body.imagePath' + id);
+        var title = eval('req.body.title' + id);
+        var description = eval('req.body.description' + id);
+        var price = eval('req.body.price' + id);
+        var productLink = eval('req.body.productLink' + id);
+        var brand = eval('req.body.brand' + id);
+        console.log(id);
+        console.log(imagePath);
+        console.log(title);
+        console.log(description);
+        console.log(price);
+        console.log(productLink);
+        console.log(brand);
+        Product.updateOne({_id: id}, {$set:{imagePath: imagePath, title: title, description: description, price: price, productLink: productLink, brand: brand}}, function(err, result){
+            console.log(err);
+            console.log(result);
+            res.redirect('/admin/updateproduct');
+        });
+    }
     //Get the admin page for adding new products
     this.getRemoveProduct = function(req, res, next, _chunkSize){
         this.getProductChunks(req, res, next, _chunkSize, 'admin/removeproduct', config.title_Remove_product);
     };
     //Set the order status to what is in the 4th parameter(status)
-    this.setStatus = function(req, res, next,status){
+    this.setStatus = function(req, res, next, status){
         var id = req.params.id;
         var status = status;
         Order.updateOne({_id: id}, {$set:{status: status}}, function(err, result){
-
         });
     };
     //Set the ordersaliexpress id, using the form on /admin/orderprocessing
@@ -301,9 +325,9 @@ module.exports = function handler() {
     };
     //Posts the signup form
     this.postSignup = function(req, res, next){
-            let id = req.user._id;   
-            let email = req.user.email;
-            let hostname = req.hostname;
+            var id = req.user._id;   
+            var email = req.user.email;
+            var hostname = req.hostname;
             if (req.session.oldUrl){
                 var oldUrl = req.session.oldUrl;
                 req.session.oldUrl = null;
@@ -315,7 +339,7 @@ module.exports = function handler() {
     };
     //email verifciation
     this.getVerifyEmail = function(req, res, next){
-        let id = req.params.id;
+        var id = req.params.id;
         User.findById(id, function(err, user){
             User.update({_id: id}, {$set:{activated: true}}, function(err, result){
                 if(err){
@@ -340,8 +364,8 @@ module.exports = function handler() {
         });
     };
     this.sendResetPassword = function(req, res, next){
-        let email = req.body.email;
-        let hostname = req.hostname;
+        var email = req.body.email;
+        var hostname = req.hostname;
         User.findOne({email: email}, function(err, res){
             console.log(res);
             eHandler.sendPasswordReset(res._id, res.email, res.password, hostname);
@@ -351,14 +375,14 @@ module.exports = function handler() {
        res.render('resetPassword',{secrect: req.params.secrect, email: req.params.email});
     };
     this.postResetPassword = function(req, res, next){
-        let secrect = req.params.secrect;
-        let email = req.params.email;
+        var secrect = req.params.secrect;
+        var email = req.params.email;
         User.findOne({email: email}, function(err, res){
             console.log(res);
-            let same = bcrypt.compareSync(secrect,res.password)
+            var same = bcrypt.compareSync(secrect,res.password)
             if (same == true){
-               let p1 = req.body.password1;
-               let p2 = req.body.password2;
+               var p1 = req.body.password1;
+               var p2 = req.body.password2;
                if (p1 == p2){
                    User.updateOne({email: email}, {$set:{password: bcrypt.hashSync(p1, bcrypt.genSaltSync(5), null)}});
                    res.redirect('/user/signin');
@@ -368,7 +392,7 @@ module.exports = function handler() {
     }
     //Posts the signin form | Will redirect to login protected pages if you were trying yo acces them.
     this.postSignin = function(req, res, next){
-        let id = req.user.id;
+        var id = req.user.id;
         User.findById(id, function(err, user){
             if(err){
                 res.write(err);

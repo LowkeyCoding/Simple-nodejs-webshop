@@ -12,20 +12,21 @@ define("site_url", "");
 
 //Website Titles
 define("title_Sitename", "");
-define("title_Privacy_policy", "");
-define("title_Refund_policy", "");
-define("title_Terms_of_service", "");
-define("title_Profile", "");
-define("title_Orders", "");
-define("title_Admin_panel", "");
-define("title_Order_processing", "");
-define("title_Order_shipping", "");
-define("title_Add_product", "");
-define("title_Remove_product", "");
-define("title_Signup", "");
-define("title_Signin", "");
-define("title_Invoice", "");
-define("title_Shopping_cart", "")
+define("title_Privacy_policy", "Privacy policy");
+define("title_Refund_policy", "Refund policy");
+define("title_Terms_of_service", "Terms of Service");
+define("title_Profile", "Profile");
+define("title_Orders", "Orders");
+define("title_Admin_panel", "Admin panel");
+define("title_Order_processing", "Order Processing");
+define("title_Order_shipping", "Order Shipping");
+define("title_Add_product", "Add product");
+define("title_Update_product", "Update product");
+define("title_Remove_product", "Remove product");
+define("title_Signup", "Signup");
+define("title_Signin", "Signin");
+define("title_Invoice", "Invoice");
+define("title_Shopping_cart", "Shopping cart")
 
 //App config
 define("db_link", "");
